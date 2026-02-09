@@ -1,0 +1,6 @@
+SELECT 
+  ProductionYear, 
+  COUNT(*) AS total_count_productionyear
+FROM `mrdipeshashah.mydvdcollection.dvdcollection`
+WHERE ProductionYear IS NOT NULL 
+GROUP BY ProductionYear;
