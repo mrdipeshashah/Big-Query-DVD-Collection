@@ -1,0 +1,5 @@
+SELECT 
+  MediaType, 
+  COUNT(*) AS total_count_mediatype
+FROM `mrdipeshashah.mydvdcollection.dvdcollection` 
+GROUP BY MediaType;
