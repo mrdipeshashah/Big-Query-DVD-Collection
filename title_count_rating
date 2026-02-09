@@ -1,0 +1,13 @@
+SELECT 
+  CASE 
+    WHEN Rating >= 9 AND Rating <= 10 THEN '9 to 10'
+    WHEN Rating >= 8 AND Rating < 9   THEN '8 to 9'
+    WHEN Rating >= 7 AND Rating < 8   THEN '7 to 8'
+    WHEN Rating >= 6 AND Rating < 7   THEN '6 to 7'
+    WHEN Rating >= 5 AND Rating < 6   THEN '5 to 6'
+    ELSE 'Below 5 or No Rating'
+  END AS rating_range,
+  COUNT(*) AS title_count_rating
+FROM `mrdipeshashah.mydvdcollection.dvdcollection` 
+GROUP BY rating_range
+ORDER BY rating_range DESC;
