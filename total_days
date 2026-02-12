@@ -1,0 +1,24 @@
+WITH cleaned_data AS (
+  SELECT 
+    SAFE_CAST(REGEXP_EXTRACT(runningtime, r'(\d+\.?\d*)') AS FLOAT64) AS clean_hours
+  FROM `mrdipeshashah.mydvdcollection.dvdcollection` 
+),
+stats AS (
+  SELECT 
+    COUNT(*) AS total_dvds,
+    SUM(IFNULL(clean_hours, 0)) AS known_hours,
+    COUNTIF(clean_hours > 0) AS dvds_with_data
+  FROM cleaned_data
+),
+averages AS (
+  SELECT 
+    *,
+    IF(dvds_with_data > 0, known_hours / dvds_with_data, 0) AS avg_hours
+  FROM stats
+)
+SELECT 
+  total_dvds,
+  dvds_with_data,
+  ROUND(avg_hours, 2) AS avg_hours_per_movie,
+  ROUND((known_hours + (avg_hours * (total_dvds - dvds_with_data))) / 24, 2) AS estimated_total_days
+FROM averages
