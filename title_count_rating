@@ -8,6 +8,6 @@ SELECT
     ELSE 'Below 5 or No Rating'
   END AS rating_range,
   COUNT(*) AS title_count_rating
-FROM `mrdipeshashah.mydvdcollection.dvdcollection` 
+FROM `enter.tablename_123456.events_*` 
 GROUP BY rating_range
 ORDER BY rating_range DESC;
