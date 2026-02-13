@@ -1,6 +1,6 @@
 SELECT 
   ProductionYear, 
   COUNT(*) AS total_count_productionyear
-FROM `mrdipeshashah.mydvdcollection.dvdcollection`
+FROM `enter.tablename_123456.events_*`
 WHERE ProductionYear IS NOT NULL 
 GROUP BY ProductionYear;
