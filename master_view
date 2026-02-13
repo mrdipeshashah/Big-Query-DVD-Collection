@@ -18,5 +18,5 @@ SELECT
     WHEN Rating >= 5 THEN '5 to 6'
     ELSE 'Other/No Rating'
   END AS RatingRange
-FROM `mrdipeshashah.mydvdcollection.dvdcollection` 
+FROM `enter.tablename_123456.events_*`
 WHERE OriginalTitle IS NOT NULL;
